@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NY AINA Sandrinah Riage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        body.light-mode {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            color: #333333;
+        }
+        header {
+            background: linear-gradient(90deg, #6a0dad, #00ff88);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+        }
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.2);
+        }
+        nav {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        body.light-mode nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        body.light-mode nav a {
+            color: #333333;
+        }
+        nav a:hover {
+            color: #4682B4;
+        }
+        body.light-mode nav a:hover {
+            color: #2F2F7F;
+        }
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #4682B4;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        body.light-mode h2 {
+            color: #2F2F7F;
+        }
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #6a0dad;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+        .project-item, .education-item, .skills-item, .contact-item {
+            background-color: #2c2c2c;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        body.light-mode .project-item,
+        body.light-mode .education-item,
+        body.light-mode .skills-item,
+        body.light-mode .contact-item {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .project-item:hover, .education-item:hover, .skills-item:hover, .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(70, 130, 180, 0.2);
+        }
+        body.light-mode .project-item:hover,
+        body.light-mode .education-item:hover,
+        body.light-mode .skills-item:hover,
+        body.light-mode .contact-item:hover {
+            box-shadow: 0 5px 15px rgba(47, 47, 127, 0.2);
+        }
+        .project-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .project-item img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .project-item img:hover {
+            transform: scale(1.05);
+        }
+        .project-item div {
+            flex: 1;
+        }
+        .project-item h3, .education-item h3 {
+            color: #4682B4;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        body.light-mode .project-item h3,
+        body.light-mode .education-item h3 {
+            color: #2F2F7F;
+        }
+        .project-item p, .education-item p, .contact-item p {
+            color: #b0b0b0;
+            font-size: 1rem;
+        }
+        body.light-mode .project-item p,
+        body.light-mode .education-item p,
+        body.light-mode .contact-item p {
+            color: #555555;
+        }
+        .project-item a {
+            color: #4682B4;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        body.light-mode .project-item a {
+            color: #2F2F7F;
+        }
+        .project-item a:hover {
+            text-decoration: underline;
+        }
+        .skills-item ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .skills-item li {
+            background-color: #6a0dad;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: background-color 0.3s ease;
+        }
+        .skills-item li:hover {
+            background-color: #4682B4;
+            color: #ffffff;
+        }
+        body.light-mode .skills-item li:hover {
+            background-color: #2F2F7F;
+            color: #ffffff;
+        }
+        .contact-item a {
+            color: #4682B4;
+            text-decoration: none;
+        }
+        body.light-mode .contact-item a {
+            color: #2F2F7F;
+        }
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: #b0b0b0;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+        body.light-mode footer {
+            background-color: #ffffff;
+            color: #555555;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .project-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .project-item img {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 1rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            nav a {
+                margin: 0 0.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NY AINA Sandrinah Riage</h1>
+        <p>Développeuse Informatique | Spécialisée en Développement Web et Applicatif</p>
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+    <nav>
+        <a href="#about">À propos</a>
+        <a href="#education">Formation</a>
+        <a href="#projects">Projets</a>
+        <a href="#skills">Compétences</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="about" class="about">
+        <h2>À propos de moi</h2>
+        <p>Je suis une étudiante passionnée par le développement web et logiciel, actuellement en troisième année de licence en Informatique à l'École de Management et d'Innovation Technologique (EMIT) à Fianarantsoa. Maîtrisant des technologies comme Laravel, Spring Boot, Java, et MySQL, j'ai réalisé plusieurs projets académiques et professionnels, notamment pour ITDC Mada. Mon objectif est de créer des solutions innovantes et performantes.</p>
+    </section>
+    <section id="education" class="education">
+        <h2>Formation</h2>
+        <div class="education-item">
+            <h3>Licence 3, Informatique - EMIT, Fianarantsoa</h3>
+            <p>2024 - 2025 | Parcours Développement d'Application Intranet-Internet</p>
+        </div>
+        <div class="education-item">
+            <h3>Licence 2, Informatique - EMIT, Fianarantsoa</h3>
+            <p>2023 - 2024 | Parcours Développement d'Application Intranet-Internet</p>
+        </div>
+        <div class="education-item">
+            <h3>Licence 1, Informatique - EMIT, Fianarantsoa</h3>
+            <p>2022 - 2023 | Parcours Développement d'Application Intranet-Internet</p>
+        </div>
+        <div class="education-item">
+            <h3>Baccalauréat Série C - Lycée Moderne Ampefiloha, Antananarivo</h3>
+            <p>2020 - 2021</p>
+        </div>
+        <div class="education-item">
+            <h3>Baccalauréat Série A - Lycée Rigueur Maximal des Jeunes, Antananarivo</h3>
+            <p>2019 - 2020</p>
+        </div>
+    </section>
+    <section id="projects" class="projects">
+        <h2>Projets</h2>
+        <div class="project-item">
+            <img src="reservation_hotel.png" alt="Site web de réservation hôtelière">
+            <div>
+                <h3>Site web de réservation hôtelière</h3>
+                <p>2025 | Développement d'un site dynamique pour la réservation en ligne de chambres d'hôtel. Outils : Laravel, MySQL.</p>
+                <a href="https://github.com/RiageNyAina/reservation_chambre_en_ligne" target="_blank">Voir le code sur GitHub</a>
+            </div>
+        </div>
+        <div class="project-item">
+            <img src="Suivi_situation_financiere.PNG" alt="Application de suivi financier">
+            <div>
+                <h3>Application de suivi financier</h3>
+                <p>2025 | Création d'une application pour suivre la situation financière d'une association. Outils : SpringBoot, PostgreSQL.</p>
+            </div>
+        </div>
+        <div class="project-item">
+            <img src="administrationPatrimoine.PNG" alt="Système d'administration des patrimoines">
+            <div>
+                <h3>Système d'administration des patrimoines</h3>
+                <p>2024 | Projet réalisé chez ITDC Mada pour gérer les patrimoines d'une entreprise. Outils : Java, MySQL.</p>
+                <a href="https://github.com/RiageNyAina/administration_des_patrimoines" target="_blank">Voir le code sur GitHub</a>
+            </div>
+        </div>
+        <div class="project-item">
+            <img src="Gestion_salle_de_classe.PNG" alt="Application de gestion de salle de classe">
+            <div>
+                <h3>Application de gestion de salle de classe</h3>
+                <p>2024 | Conception d'une application pour gérer les salles de classe. Outils : JS, HTML, CSS, PHP, MySQL.</p>
+                <a href="https://github.com/RiageNyAina/Gestion_salle_de_classe" target="_blank">Voir le code sur GitHub</a>
+            </div>
+        </div>
+        <div class="project-item">
+            <img src="Gestion_instrument_musical.PNG" alt="Application de gestion de vente d'instruments musicaux">
+            <div>
+                <h3>Application de gestion de vente d'instruments musicaux</h3>
+                <p>2024 | Application pour gérer les ventes d'instruments musicaux. Outils : Java, MySQL, C#.</p>
+                <a href="https://github.com/RiageNyAina/Vente_instrument_musical" target="_blank">Voir le code sur GitHub</a>
+            </div>
+        </div>
+    </section>
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Full Screen Image">
+    </div>
+    <section id="skills" class="skills">
+        <h2>Compétences</h2>
+        <div class="skills-item">
+            <ul>
+                <li>HTML/CSS</li>
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>jQuery</li>
+                <li>Java</li>
+                <li>C#</li>
+                <li>C</li>
+                <li>C++</li>
+                <li>Laravel</li>
+                <li>Symfony</li>
+                <li>CodeIgniter</li>
+                <li>SpringBoot</li>
+                <li>MySQL</li>
+                <li>PostgreSQL</li>
+                <li>Oracle</li>
+                <li>MS Access</li>
+                <li>GitHub</li>
+                <li>Trello</li>
+                <li>MERISE</li>
+                <li>UML</li>
+            </ul>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <div class="contact-item">
+            <p>Email: <a href="mailto:riagenyaina@gmail.com">riagenyaina@gmail.com</a></p>
+            <p>Téléphone: 0387254708</p>
+            <p>Adresse: Lot 139AE/3602 Ankofafa Ambony, Soatanana</p>
+        </div>
+    </section>
+    <footer>
+        <p>© 2025 NY AINA Sandrinah Riage. Tous droits réservés.</p>
+    </footer>
+    <script>
+        const toggleButton = document.querySelector('.theme-toggle');
+        const body = document.body;
+        const icon = toggleButton.querySelector('i');
+
+        // Load saved theme from localStorage
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const projectImages = document.querySelectorAll('.project-item img');
+
+        projectImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+            });
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
